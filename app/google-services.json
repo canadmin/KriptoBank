@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "478106962369",
+    "firebase_url": "https://kriptobank-43c8c.firebaseio.com",
+    "project_id": "kriptobank-43c8c",
+    "storage_bucket": "kriptobank-43c8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478106962369:android:c68aebb773b915d7",
+        "android_client_info": {
+          "package_name": "com.example.canyard.kriptobank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478106962369-1cr3qgd80o3h3oangifts3u0pufke204.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.canyard.kriptobank",
+            "certificate_hash": "d3ae99e755e97cca7e281192d5faeb9e6378f364"
+          }
+        },
+        {
+          "client_id": "478106962369-a7or45q7o1b38l45qf7grus5pddqru7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzWY1o9SOsInDZjdCJ6Z2RRrW0exNGZ4U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478106962369-a7or45q7o1b38l45qf7grus5pddqru7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
