@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +24,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class KayitActivity extends AppCompatActivity {
-    private EditText kayitİsim,kayitPosta,kayitSifre;
+    private EditText kayitİsim,kayitPosta,kayitSifre,tcno;
     private FirebaseAuth firebaseAuth;
     private Button kayitButon;
     private DatabaseReference databaseReference;
@@ -35,6 +36,7 @@ public class KayitActivity extends AppCompatActivity {
         kayitİsim=findViewById(R.id.kayit_isim);
         kayitPosta=findViewById(R.id.kayit_mail);
         kayitSifre=findViewById(R.id.kayit_sifre);
+        tcno=findViewById(R.id.tc_no);
         kayitButon=findViewById(R.id.kayit_buton);
         firebaseAuth=FirebaseAuth.getInstance();
         kayitButon.setOnClickListener(new View.OnClickListener() {
@@ -44,8 +46,11 @@ public class KayitActivity extends AppCompatActivity {
                 String isim=kayitİsim.getText().toString();
                 String posta=kayitPosta.getText().toString();
                 String sifre=kayitSifre.getText().toString();
-                if(!TextUtils.isEmpty(cuzdanNo)&&!TextUtils.isEmpty(isim)&&!TextUtils.isEmpty(posta)&&!TextUtils.isEmpty(sifre)){
-                   kayitOlustur(cuzdanNo,isim,posta,sifre);
+                String tc_no=tcno.getText().toString();
+                if(!TextUtils.isEmpty(cuzdanNo)&&!TextUtils.isEmpty(isim)&&!TextUtils.isEmpty(posta)&&!TextUtils.isEmpty(sifre)&&!TextUtils.isEmpty(tc_no)&&tc_no.length()==11){
+                   kayitOlustur(cuzdanNo,isim,posta,sifre,tc_no);
+                }else{
+                    Toast.makeText(KayitActivity.this, "Bilgilerinizi Kontrol ediniz", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -64,7 +69,7 @@ public class KayitActivity extends AppCompatActivity {
         return cuzdanNo;
     }
 
-    private void kayitOlustur(final String cuzdanKey, final String ad, String eposta, String sifre){
+    private void kayitOlustur(final String cuzdanKey, final String ad, final String eposta, String sifre, final String tc_no){
         firebaseAuth.createUserWithEmailAndPassword(eposta,sifre)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -74,8 +79,10 @@ public class KayitActivity extends AppCompatActivity {
                             String uid=currentUser.getUid();
                             databaseReference=FirebaseDatabase.getInstance().getReference().child("kullanicilar").child(uid);
                             HashMap<String,String>kullaniciMap=new HashMap<>();
+                            kullaniciMap.put("email",eposta);
                             kullaniciMap.put("isim",ad);
                             kullaniciMap.put("hesapkimligi",cuzdanKey);
+                            kullaniciMap.put("tc",tc_no);
 
                             databaseReference.setValue(kullaniciMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

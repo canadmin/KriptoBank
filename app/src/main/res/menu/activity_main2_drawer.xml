@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single" >
+       <item android:title="İşlemler">
+           <menu>
+        <item
+            android:id="@+id/transfer"
+            android:title="Havale/EFT"
+            android:icon="@drawable/transfer"
+            />
+
+        <item
+            android:id="@+id/dokumler"
+            android:title="Hesap Dökümleri"
+            android:icon="@drawable/hesapdokum"
+            />
+        <item
+            android:id="@+id/ozetler"
+            android:title="Borç özetleri"
+            android:icon="@drawable/debt"
+            />
+        <item
+            android:id="@+id/transferBilgileri"
+            android:title="Transfer özetleri"
+            android:icon="@drawable/summarttrans"/>
+
+        <item
+            android:id="@+id/yardımAl"
+            android:title="Canlı yardım"
+            android:icon="@drawable/support"
+            />
+           </menu>
+       </item>
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/hesapBilgileri"
+                android:title="Hesap bilgileri"
+                android:icon="@drawable/account"
+                />
+
+            <item
+                android:id="@+id/kartBilgileri"
+                android:title="Kart bilgileri"
+                android:icon="@drawable/cards"
+                />
+        </menu>
+    </item>
+
+</menu>
