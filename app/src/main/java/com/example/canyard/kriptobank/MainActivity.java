@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
    /* private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;*/
+    String userName,userKey;
+    String currentUID;
 
 
     @Override
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String currentUser=FirebaseAuth.getInstance().getUid();
+        currentUID=currentUser;
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -57,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String userName=dataSnapshot.child("isim").getValue().toString();
-                String userKey=dataSnapshot.child("hesapkimligi").getValue().toString();
+                userName=dataSnapshot.child("isim").getValue().toString();
+                userKey=dataSnapshot.child("hesapkimligi").getValue().toString();
 
                 account_key.setText(userKey);
                 account_name.setText(userName);
@@ -121,19 +125,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuItem.getItemId();
 
         if (id == R.id.transfer) {
-            Toast.makeText(this, "transfer", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.dokumler) {
+        }
+        if (id == R.id.dokumler) {
 
-        } else if (id == R.id.ozetler) {
+        }
+        if (id == R.id.ozetler) {
 
-        } else if (id == R.id.transferBilgileri) {
+        }
+        if (id == R.id.transferBilgileri) {
 
-        } else if (id == R.id.yardımAl) {
+        }
+        if (id == R.id.yardımAl) {
 
-        } else if (id == R.id.hesapBilgileri) {
+        }
+        if (id == R.id.hesapBilgileri) {
 
-        }else if (id == R.id.kartBilgileri) {
+        }
+        if (id == R.id.kartBilgileri) {
+
+        }
+
+         if (id == R.id.kartEkle) {
+
+            Intent addCardIntent=new Intent(MainActivity.this,KartEkleActivity.class);
+            addCardIntent.putExtra("userName",userName);
+            addCardIntent.putExtra("userKey",userKey);
+            addCardIntent.putExtra("currentuid",currentUID);
+            startActivity(addCardIntent);
 
         }
 
