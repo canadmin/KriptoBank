@@ -8,12 +8,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.canyard.model.Card;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,17 +30,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth firebaseAuth;
     private TextView account_name,account_key;
     private FirebaseUser firebaseUser;
-    private DatabaseReference mUsersDatabase;
+    private DatabaseReference mUsersDatabase,mCardsDatabase;
    /* private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;*/
     String userName,userKey;
     String currentUID;
+    private RecyclerView mUserlist;
 
+    private  DatabaseReference cardDatabaseReferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String currentUser=FirebaseAuth.getInstance().getUid();
         currentUID=currentUser;
+        mUserlist=findViewById(R.id.card_list);mUserlist.setHasFixedSize(true);
+        mUserlist.setLayoutManager(new LinearLayoutManager(this));
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -56,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        mCardsDatabase=FirebaseDatabase.getInstance().getReference().child("cards");
+        cardDatabaseReferences =FirebaseDatabase.getInstance().getReference().child("cards");
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("kullanicilar").child(currentUser);
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
@@ -75,8 +92,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        listToCard();
+
     }
 
+    private void listToCard() {
+        FirebaseRecyclerOptions options=new FirebaseRecyclerOptions.Builder<Card>()
+                .setQuery(cardDatabaseReferences,Card.class).build();
+
+
+        FirebaseRecyclerAdapter<Card,CardsVievHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Card, CardsVievHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull CardsVievHolder holder, int position, @NonNull Card model) {
+
+                String cardId=getRef(position).getKey();
+                final String list_card_id=getRef(position).getKey();
+               holder.cardNumber.setText(model.getNumber().toString());
+                holder.cardOwner.setText(model.getCardOwner().toString());
+
+            }
+
+            @NonNull
+            @Override
+            public CardsVievHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_custom,parent,false);
+                CardsVievHolder vievHolder=new CardsVievHolder(v);
+                return vievHolder;
+            }
+
+
+        };
+        mUserlist.setAdapter(firebaseRecyclerAdapter);
+        firebaseRecyclerAdapter.startListening();
+    }
 
 
     @Override
@@ -98,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
+
         firebaseAuth=FirebaseAuth.getInstance();
         FirebaseUser currentUser=firebaseAuth.getCurrentUser();
         if (currentUser==null){
@@ -160,4 +209,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+    //Holder
+
+    public static class CardsVievHolder extends RecyclerView.ViewHolder{
+        TextView cardOwner;
+        TextView cardNumber;
+
+        public CardsVievHolder(View itemView) {
+            super(itemView);
+            cardNumber=itemView.findViewById(R.id.cardNumber_single);
+            cardOwner=itemView.findViewById(R.id.cardOwner_single);
+
+        }
+    }
 }
+
+
+
