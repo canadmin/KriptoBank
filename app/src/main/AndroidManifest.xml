@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".GirisActivity" />
         <activity android:name=".KayitActivity" />
-        <activity android:name=".KartEkleActivity"></activity>
+        <activity android:name=".KartEkleActivity" />
+        <activity android:name=".KardSpesActivity"></activity>
     </application>
 
 </manifest>

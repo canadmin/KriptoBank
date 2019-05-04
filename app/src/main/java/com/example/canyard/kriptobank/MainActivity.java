@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
    /* private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;*/
-    String userName,userKey;
-    String currentUID;
+   private String userName,userKey;
+    private String currentUID;
     private RecyclerView mUserlist;
 
     private  DatabaseReference cardDatabaseReferences;
@@ -103,12 +103,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         FirebaseRecyclerAdapter<Card,CardsVievHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Card, CardsVievHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull CardsVievHolder holder, int position, @NonNull Card model) {
+            protected void onBindViewHolder(@NonNull final CardsVievHolder holder, int position, @NonNull final Card model) {
 
                 String cardId=getRef(position).getKey();
                 final String list_card_id=getRef(position).getKey();
                holder.cardNumber.setText(model.getNumber().toString());
                 holder.cardOwner.setText(model.getCardOwner().toString());
+                cardDatabaseReferences.child(list_card_id).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        holder.cardNumber.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent cardIntent=new Intent(getApplicationContext(),KardSpesActivity.class);
+                                cardIntent.putExtra("userID",currentUID);
+                                cardIntent.putExtra("cardOwner",model.getCardOwner());
+                                cardIntent.putExtra("cardNumber",model.getNumber());
+                                cardIntent.putExtra("accountKey",userKey);
+                                cardIntent.putExtra("cardBalance",model.getBalance());
+                                startActivity(cardIntent);
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
             }
 
