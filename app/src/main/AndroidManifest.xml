@@ -22,7 +22,8 @@
         <activity android:name=".KayitActivity" />
         <activity android:name=".KartEkleActivity" />
         <activity android:name=".KardSpesActivity" />
-        <activity android:name=".TrasferActivity"></activity>
+        <activity android:name=".TrasferActivity" />
+        <activity android:name=".AccountSettingActivity"></activity>
     </application>
 
 </manifest>

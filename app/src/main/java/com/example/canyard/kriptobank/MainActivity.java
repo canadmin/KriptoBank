@@ -32,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth firebaseAuth;
     private TextView account_name,account_key;
@@ -206,6 +208,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         if (id == R.id.hesapBilgileri) {
+            Intent intent=new Intent(MainActivity.this,AccountSettingActivity.class);
+            intent.putExtra("uid",currentUID);
+            startActivity(intent);
 
         }         if (id == R.id.kartEkle) {
 

@@ -75,7 +75,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="E-Posta Adresi Giriniz" />
+                android:hint="E-Posta Adresi Giriniz"
+                android:inputType="textEmailAddress" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,7 +96,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
-                android:hint="Sfire Giriniz" />
+                android:hint="Sfire Giriniz"
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/giris_buton"
