@@ -166,16 +166,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        FirebaseUser currentUser=firebaseAuth.getCurrentUser();
-        if (currentUser==null){
-            startActivity(new Intent(MainActivity.this,GirisActivity.class));
-        }
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -197,6 +188,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuItem.getItemId();
 
         if (id == R.id.transfer) {
+            Intent intent=new Intent(getApplicationContext(),TrasferActivity.class);
+            intent.putExtra("userKey",userKey);
+            startActivity(intent);
 
         }
         if (id == R.id.dokumler) {
@@ -213,8 +207,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (id == R.id.hesapBilgileri) {
 
-        }
-        if (id == R.id.kartEkle) {
+        }         if (id == R.id.kartEkle) {
 
             Intent addCardIntent=new Intent(MainActivity.this,KartEkleActivity.class);
             addCardIntent.putExtra("userName",userName);
