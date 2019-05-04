@@ -59,7 +59,7 @@ public class KartEkleActivity extends AppCompatActivity {
     }
 
     private void kartEkle(String userName, String userKey, String currentUID, String balance, String number) {
-        databaseReference=FirebaseDatabase.getInstance().getReference().child("cards").child(number);
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("cards").child(currentUID).child(number);
         HashMap<String,String> cardMap=new HashMap<>();
         cardMap.put("cardOwner",userName);
         cardMap.put("hesapkimligi",userKey);

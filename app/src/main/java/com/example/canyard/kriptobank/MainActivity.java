@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void listToCard() {
         FirebaseRecyclerOptions options=new FirebaseRecyclerOptions.Builder<Card>()
-                .setQuery(cardDatabaseReferences,Card.class).build();
+                .setQuery(cardDatabaseReferences.child(currentUID),Card.class).build();
 
 
         FirebaseRecyclerAdapter<Card,CardsVievHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Card, CardsVievHolder>(options) {
