@@ -62,7 +62,7 @@ public class KayitActivity extends AppCompatActivity {
         Random rast=new Random();
 
         for(int i=0;i<=10;i++){
-            int sayi=rast.nextInt(57)+65;
+            int sayi=rast.nextInt(25)+97;
             cuzdanNo+=(char)sayi;
         }
 
