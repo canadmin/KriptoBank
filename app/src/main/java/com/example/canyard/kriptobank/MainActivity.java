@@ -214,11 +214,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.hesapBilgileri) {
 
         }
-        if (id == R.id.kartBilgileri) {
-
-        }
-
-         if (id == R.id.kartEkle) {
+        if (id == R.id.kartEkle) {
 
             Intent addCardIntent=new Intent(MainActivity.this,KartEkleActivity.class);
             addCardIntent.putExtra("userName",userName);

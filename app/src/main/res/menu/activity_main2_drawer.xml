@@ -42,11 +42,7 @@
                     android:icon="@drawable/account"
                     />
 
-                <item
-                    android:id="@+id/kartBilgileri"
-                    android:title="Kart bilgileri"
-                    android:icon="@drawable/cards"
-                    />
+
                 <item
                     android:id="@+id/kartEkle"
                     android:title="Kart Ekle"

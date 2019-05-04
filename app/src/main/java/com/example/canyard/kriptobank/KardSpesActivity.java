@@ -55,11 +55,13 @@ public class KardSpesActivity extends AppCompatActivity {
     }
 
     private void dokumleriAl() {
-        String odenenFirma;
-         String Tutar;
-         String tur;
-        CardMovements cardMovements=new CardMovements("Kardesler Bakkal","7Tl","-");
+
+        CardMovements cardMovements=new CardMovements("Migros","7 Tl","-");
         cardMovementsList.add(cardMovements);
+        CardMovements cardMovements2=new CardMovements("Iyas market","10 Tl","-");
+
+        cardMovementsList.add(cardMovements2);
+
 
         movementsAdapter.notifyDataSetChanged();
     }
