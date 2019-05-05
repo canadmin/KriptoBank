@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,6 +21,7 @@ import com.google.firebase.database.ServerValue;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,19 +61,23 @@ public class TrasferActivity extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("transfers").child(benimKey).push();
         String push_id = databaseReference.getKey();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = Calendar.getInstance().getTime();
+        String tarih=dateFormat.format(date);
+        Toast.makeText(this, tarih, Toast.LENGTH_SHORT).show();
         Map map = new HashMap<>();
         map.put("alanHesap", hedefKey);
         map.put("gonderenHesap", benimKey);
         map.put("tutar", transferBakiye);
         map.put("tur", tur);
-        map.put("tarih", ServerValue.TIMESTAMP);
+        map.put("tarih", tarih);
 
         Map map2 = new HashMap<>();
         map2.put("alanHesap", hedefKey);
         map2.put("gonderenHesap", benimKey);
         map2.put("tutar", transferBakiye);
         map2.put("tur", "gelen");
-        map2.put("tarih", ServerValue.TIMESTAMP);
+        map2.put("tarih", tarih);
 
         Map transferMap = new HashMap();
         transferMap.put(benimKey + "/" + push_id, map);
@@ -81,6 +87,7 @@ public class TrasferActivity extends AppCompatActivity {
         mRootRef.child("transfers").updateChildren(transferMap, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+
                 Intent mainIntent = new Intent(TrasferActivity.this, MainActivity.class);
                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);

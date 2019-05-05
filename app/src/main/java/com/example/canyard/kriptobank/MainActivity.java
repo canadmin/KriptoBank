@@ -202,6 +202,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         if (id == R.id.transferBilgileri) {
+            Intent transferHistoryIntent=new Intent(MainActivity.this,TransferBilgileriActivity.class);
+            transferHistoryIntent.putExtra("userKey",userKey);
+            startActivity(transferHistoryIntent);
 
         }
         if (id == R.id.yardımAl) {

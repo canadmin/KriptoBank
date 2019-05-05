@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tHistoryTutar"
+            android:layout_marginTop="25dp"
+            android:text="Transfer miktarı : 7000TL"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tHistoryTarih"
+            android:text="Transfer tarihi : 19-25-56565"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tHistoryTur"
+            android:text="Transfer Turu = Yapılan"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
