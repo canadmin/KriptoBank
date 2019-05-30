@@ -25,7 +25,10 @@
         <activity android:name=".TrasferActivity" />
         <activity android:name=".AccountSettingActivity" />
         <activity android:name=".TransferBilgileriActivity" />
-        <activity android:name=".BorcOzetleriActivity"></activity>
+        <activity android:name=".BorcOzetleriActivity" />
+        <activity android:name=".DanismanActivity" />
+        <activity android:name=".DanismanGirisActivity" />
+        <activity android:name=".DanismanKayitActivity"></activity>
     </application>
 
 </manifest>

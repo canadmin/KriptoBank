@@ -60,11 +60,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="E-mail"
-                android:layout_marginTop="10dp"
-                android:textSize="25dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="E-mail"
+                android:textSize="14sp"
 
                 />
 
@@ -76,16 +76,18 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="E-Posta Adresi Giriniz"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="12sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
-                android:textSize="25dp"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:text="Password"
+                android:textSize="14sp"
 
                 />
 
@@ -97,7 +99,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
                 android:hint="Sfire Giriniz"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/giris_buton"
@@ -109,6 +112,16 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="GİRİŞ YAP" />
+            <Button
+                android:id="@+id/temsilci_girisYap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Temsilci Girişi" />
 
 
 
@@ -123,5 +136,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="YENİ HESAP OLUŞTUR" />
+
 
 </LinearLayout>

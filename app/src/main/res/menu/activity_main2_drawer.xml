@@ -12,11 +12,7 @@
             android:icon="@drawable/transfer"
             />
 
-        <item
-            android:id="@+id/dokumler"
-            android:title="Hesap Dökümleri"
-            android:icon="@drawable/hesapdokum"
-            />
+
         <item
             android:id="@+id/ozetler"
             android:title="Borç özetleri"

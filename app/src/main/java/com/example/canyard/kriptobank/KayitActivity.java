@@ -88,7 +88,7 @@ public class KayitActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    Intent mainIntent=new Intent(KayitActivity.this,MainActivity.class);
+                                    Intent mainIntent=new Intent(KayitActivity.this,DanismanActivity.class);
                                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(mainIntent);
                                     finish();

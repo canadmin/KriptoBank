@@ -195,9 +195,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         }
-        if (id == R.id.dokumler) {
 
-        }
         if (id == R.id.ozetler) {
             Intent ozetlerIntent=new Intent(getApplicationContext(),BorcOzetleriActivity.class);
             startActivity(ozetlerIntent);

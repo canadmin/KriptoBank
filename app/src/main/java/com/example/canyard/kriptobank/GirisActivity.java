@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class GirisActivity extends AppCompatActivity {
-    private Button girisButon,kayitButon;
+    private Button girisButon,kayitButon,temsilciGiris;
     private EditText girisMail,girisSifre;
     private FirebaseAuth firebaseAuth;
     @Override
@@ -30,7 +30,14 @@ public class GirisActivity extends AppCompatActivity {
         girisMail=findViewById(R.id.giris_mail);
         girisSifre=findViewById(R.id.giris_sifre);
 
+        temsilciGiris=findViewById(R.id.temsilci_girisYap);
 
+        temsilciGiris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GirisActivity.this,DanismanGirisActivity.class));
+            }
+        });
         girisButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
