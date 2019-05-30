@@ -38,6 +38,7 @@ public class BorcOzetleriActivity extends AppCompatActivity {
         Borclar borc1=new Borclar("kredi kartı","Ziraat kart borcu","1200 Tl");
         Borclar borc2=new Borclar("Ev Kredisi","Ziraat kredı","4500 Tl");
         Borclar borc3=new Borclar("Ev Kredisi","Ziraat kredı","4500 Tl");
+        Borclar borc4=new Borclar("Ev Kredisi","Ziraat kredı","4500 Tl");
 
         borcOzetleriList.add(borc1);
         borcOzetleriList.add(borc2);
