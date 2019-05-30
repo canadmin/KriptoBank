@@ -63,7 +63,7 @@ public class TrasferActivity extends AppCompatActivity {
         String push_id = databaseReference.getKey();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = Calendar.getInstance().getTime();
-        String tarih=dateFormat.format(date);
+        String tarih = dateFormat.format(date);
         Toast.makeText(this, tarih, Toast.LENGTH_SHORT).show();
         Map map = new HashMap<>();
         map.put("alanHesap", hedefKey);

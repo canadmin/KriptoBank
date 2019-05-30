@@ -199,6 +199,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         if (id == R.id.ozetler) {
+            Intent ozetlerIntent=new Intent(getApplicationContext(),BorcOzetleriActivity.class);
+            startActivity(ozetlerIntent);
 
         }
         if (id == R.id.transferBilgileri) {
