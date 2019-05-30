@@ -11,6 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center"
+        android:background="#ab9090"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         >
 
         <LinearLayout
@@ -50,10 +55,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Borc tutari"
-                android:id="@+id/tutarBorcSingle"
+
 
                 />
             <TextView
+                android:id="@+id/tutarBorcSingle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1200 tl"

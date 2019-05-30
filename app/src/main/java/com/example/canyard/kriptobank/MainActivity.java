@@ -39,9 +39,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView account_name,account_key;
     private FirebaseUser firebaseUser;
     private DatabaseReference mUsersDatabase,mCardsDatabase;
-   /* private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToggle;
-    private NavigationView navigationView;*/
    private String userName,userKey;
     private String currentUID;
     private RecyclerView mUserlist;
@@ -57,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String currentUser=FirebaseAuth.getInstance().getUid();
         currentUID=currentUser;
-        mUserlist=findViewById(R.id.card_list);mUserlist.setHasFixedSize(true);
+        mUserlist=findViewById(R.id.card_list);
+        mUserlist.setHasFixedSize(true);
         mUserlist.setLayoutManager(new LinearLayoutManager(this));
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -208,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         if (id == R.id.yardımAl) {
+            startActivity(new Intent(getApplicationContext(),YardimActivity.class));
 
         }
         if (id == R.id.hesapBilgileri) {

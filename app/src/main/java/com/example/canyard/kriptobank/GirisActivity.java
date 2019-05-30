@@ -60,16 +60,7 @@ public class GirisActivity extends AppCompatActivity {
 
 
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        FirebaseUser currentUser=firebaseAuth.getCurrentUser();
-        if (currentUser!=null){
-            startActivity(new Intent(GirisActivity.this,MainActivity.class));
-        }
-    }
 
     private void girisYap(String eposta,String sifre){
         firebaseAuth.signInWithEmailAndPassword(eposta,sifre)

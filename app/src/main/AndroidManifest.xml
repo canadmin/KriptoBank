@@ -28,7 +28,8 @@
         <activity android:name=".BorcOzetleriActivity" />
         <activity android:name=".DanismanActivity" />
         <activity android:name=".DanismanGirisActivity" />
-        <activity android:name=".DanismanKayitActivity"></activity>
+        <activity android:name=".DanismanKayitActivity" />
+        <activity android:name=".YardimActivity"></activity>
     </application>
 
 </manifest>
