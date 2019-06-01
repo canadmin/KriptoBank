@@ -31,6 +31,7 @@ public class YardimActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
     private String currentUID;
+    private String gidecekİsim;
 
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -48,7 +49,7 @@ public class YardimActivity extends AppCompatActivity {
         databaseReference =FirebaseDatabase.getInstance().getReference().child("danismanlar");
         String currentUser=FirebaseAuth.getInstance().getUid();
         currentUID=currentUser;
-
+        gidecekİsim=getIntent().getStringExtra("isim");
 
 
     }
@@ -76,6 +77,7 @@ public class YardimActivity extends AppCompatActivity {
                         Intent chatIntent=new Intent(getApplicationContext(),ChatActivity.class);
                         chatIntent.putExtra("user_id",danismanListId);
                         chatIntent.putExtra("isim",danismanIsmi);
+                        chatIntent.putExtra("fromUser",gidecekİsim);
                         startActivity(chatIntent);
 
                     }

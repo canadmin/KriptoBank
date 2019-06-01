@@ -51,6 +51,7 @@ public class ChatActivity extends AppCompatActivity {
     private DatabaseReference mRootRef;
     private String userName;
     private FirebaseAuth mAuth;
+    private String fromUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class ChatActivity extends AppCompatActivity {
         mRootRef= FirebaseDatabase.getInstance().getReference();
         mAuth=FirebaseAuth.getInstance();
         mchatUser=getIntent().getStringExtra("user_id");
+        fromUser=getIntent().getStringExtra("fromUser");
 
 
 
@@ -149,6 +151,7 @@ public class ChatActivity extends AppCompatActivity {
             messageMap.put("message",message);
             messageMap.put("type","text");
             messageMap.put("from",mCurrentUserId);
+            messageMap.put("fromUser",fromUser);
 
 
             Map messageUserMap=new HashMap();

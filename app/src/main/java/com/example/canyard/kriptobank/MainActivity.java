@@ -206,7 +206,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         if (id == R.id.yardımAl) {
-            startActivity(new Intent(getApplicationContext(),YardimActivity.class));
+            Intent yardimIntent=new Intent(MainActivity.this,YardimActivity.class);
+            yardimIntent.putExtra("isim",userName);
+            startActivity(yardimIntent);
 
         }
         if (id == R.id.hesapBilgileri) {
