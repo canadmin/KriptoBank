@@ -29,7 +29,8 @@
         <activity android:name=".DanismanActivity" />
         <activity android:name=".DanismanGirisActivity" />
         <activity android:name=".DanismanKayitActivity" />
-        <activity android:name=".YardimActivity"></activity>
+        <activity android:name=".YardimActivity" />
+        <activity android:name=".ChatActivity"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.canyard.model.Card;
 import com.example.canyard.model.Danisman;
@@ -66,8 +67,19 @@ public class YardimActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull DanismanViewHolder holder, int position, @NonNull Danisman model) {
                // String danismanId=getRef(position).getKey();
-              //  final String danismanListId=getRef(position).getKey();
+               final String danismanListId=getRef(position).getKey();
                 holder.danismanad.setText(model.getKullaniciAdi());
+                final String danismanIsmi=model.getKullaniciAdi();
+                holder.danismanad.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent chatIntent=new Intent(getApplicationContext(),ChatActivity.class);
+                        chatIntent.putExtra("user_id",danismanListId);
+                        chatIntent.putExtra("isim",danismanIsmi);
+                        startActivity(chatIntent);
+
+                    }
+                });
             }
 
             @NonNull
